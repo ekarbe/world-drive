@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#3d8fe0" />
+    <meta name="description" content="World Drive - an endless voxel driving game. Explore a procedurally generated world, collect coins, upgrade and customise your car." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+    <title>World Drive</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="loading"><div class="spinner"></div><div>Generating world…</div></div>
+
+      <div id="hud" class="hidden">
+        <div id="coins"><span class="coin-icon"></span><span id="coin-count">0</span></div>
+        <div id="feed"></div>
+        <div id="drift"><div class="label">DRIFT</div><div class="bar"><div></div></div></div>
+        <div id="mission" class="hidden"></div>
+        <div id="location"></div>
+        <canvas id="minimap" width="200" height="200"></canvas>
+        <div id="speedo">
+          <div id="speed">0</div>
+          <div class="unit" id="speed-unit">km/h</div>
+          <div id="speedbar"><div></div></div>
+        </div>
+        <button id="prompt" class="hidden"></button>
+        <div id="toast"></div>
+        <div id="topbtns">
+          <button data-act="pause" title="Menu (Esc)">☰</button>
+          <button data-act="camera" title="Camera (C)">🎥</button>
+          <button data-act="map" title="Map (M)">🗺️</button>
+          <button data-act="reset" title="Reset car (R)" class="touch-only">↺</button>
+        </div>
+        <div id="touch" class="hidden">
+          <div class="steer">
+            <button data-touch="left" aria-label="Steer left">◀</button>
+            <button data-touch="right" aria-label="Steer right">▶</button>
+          </div>
+          <div class="pedals">
+            <button data-touch="handbrake" class="small" aria-label="Handbrake">⤵</button>
+            <button data-touch="brake" aria-label="Brake / reverse">▼</button>
+            <button data-touch="throttle" class="gas" aria-label="Accelerate">▲</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="title" class="screen">
+        <div class="panel title-panel">
+          <h1>WORLD<span>DRIVE</span></h1>
+          <p class="tagline">An endless voxel world. Cruise, collect coins, upgrade your ride.</p>
+          <div class="btns">
+            <button id="btn-play" class="primary">Play</button>
+            <button id="btn-new">New world</button>
+          </div>
+          <div class="controls-help">
+            <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrows drive</div>
+            <div><kbd>Space</kbd> handbrake · <kbd>C</kbd> camera · <kbd>M</kbd> map</div>
+            <div><kbd>E</kbd> enter shop · <kbd>R</kbd> reset · <kbd>Esc</kbd> menu</div>
+            <div class="small">Gamepad and touch supported</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pause" class="screen hidden"></div>
+      <div id="shop" class="screen hidden"></div>
+      <div id="bigmap" class="screen hidden">
+        <div class="map-wrap">
+          <canvas id="bigmap-canvas"></canvas>
+          <div class="map-ui">
+            <button data-zoom="1">＋</button>
+            <button data-zoom="-1">－</button>
+            <button data-act="map">✕</button>
+          </div>
+          <div class="legend"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
